@@ -1,6 +1,17 @@
 // src/redux/modules/counterSlice.js
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const __addNumber = createAsyncThunk(
+  // 첫번째 인자 : action value
+  "addNumber",
+  // 두번째 인자 : 콜백함수
+  (payload, thunkAPI) => {
+    setTimeout(() => {
+      thunkAPI.dispatch(addNumber(payload));
+    }, 3000);
+  }
+);
 
 const initialState = {
   number: 0,
